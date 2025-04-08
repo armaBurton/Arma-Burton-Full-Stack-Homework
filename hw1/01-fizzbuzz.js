@@ -9,6 +9,20 @@ Use console.log() to write the proper output to the command line.
 
 **/
 
+const fizzBuzz = () => {
+  for (let i = 1; i <= 100; i++) {
+    i % 3 === 0
+      ? console.log("fizz")
+      : i % 5 === 0 && i % 3 != 0
+      ? console.log("buzz")
+      : i % 5 === 0 && i % 3 === 0
+      ? console.log("fizzbuzz")
+      : console.log(i);
+  }
+};
+
+fizzBuzz();
+
 // 1
 // 2
 // fizz
