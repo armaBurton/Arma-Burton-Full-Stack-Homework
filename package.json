@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "nodemon": "^3.1.9"
+  },
+  "scripts": {
+    "coins": "nodemon hw2/01-coins.js",
+    "node": "nodemon hw2/02-node-routing.js",
+    "submit": "nodemon public/inclass-node-routes.js"
+  }
+}
