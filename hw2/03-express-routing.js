@@ -1,6 +1,7 @@
-const express = require('express');
+const express = require("express");
+const cors = require("cors");
 const app = express();
-const port = process.env.PORT || 5001;
+const port = process.env.PORT || 5000;
 
 // http://localhost:5001/welcome should return a status code 200 with a welcome message of your choice in html format
 
@@ -13,18 +14,29 @@ const port = process.env.PORT || 5001;
 // For other routes, such as http://localhost:5001/other, this exercise should return a status code 404 with '404 - page not found' in html format
 
 const routes = [
-  'welcome',
-  'redirect',
-  'redirected',
-  'cache',
-  'cookie',
-  'other',
+  "welcome",
+  "redirect",
+  "redirected",
+  "cache",
+  "cookie",
+  "other",
 ];
 
-app.get('/', (req, res) => {
+app.use(
+  cors({
+    origin: "*",
+    credentials: true,
+  })
+);
+
+app.get("/", (req, res) => {
   res.status(200);
-  res.set({ 'Content-Type': 'text/html' });
-  res.send('Express Routing Exercise');
+  res.set({ "Content-Type": "text/html" });
+  res.send("Express Routing Exercise");
+});
+
+app.get("/welcome", (req, res) => {
+  res.status(200).set({ "Content-Type": "text/html" }).send("Perafeea");
 });
 
 // Add your code here

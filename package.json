@@ -1,10 +1,13 @@
 {
   "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
     "nodemon": "^3.1.9"
   },
   "scripts": {
     "coins": "nodemon hw2/01-coins.js",
     "node": "nodemon hw2/02-node-routing.js",
+    "express": "nodemon hw2/03-express-routing.js",
     "submit": "nodemon public/inclass-node-routes.js"
   }
 }
