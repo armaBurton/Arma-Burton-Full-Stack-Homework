@@ -1,5 +1,8 @@
 export const callApi = async (link) => {
-  const res = await fetch(`http://localhost:5000/${link}`);
+  const res = await fetch(`http://localhost:5000/${link}`, {
+    method: "GET",
+    credentials: "include",
+  });
   const data = await res.json();
   document.getElementById("output").textContent = JSON.stringify(data.message);
 };
