@@ -85,7 +85,7 @@ app.get("/cookie", (req, res) => {
 app.get("/get-cookie", (req, res) => {
   res
     .set({ "Content-Type": "text/html" })
-    .send(`Cookies: ${JSON.stringify(req.cookies)}`);
+    .send(`Cookies...yum: ${JSON.stringify(req.cookies)}`);
 });
 
 app.get("/other", (req, res) => {
