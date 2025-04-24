@@ -27,7 +27,7 @@ const server = http.createServer((req, res) => {
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
 
   if (req.url === "/welcome") {
-    console.log("req.url: ", req.url);
+    // console.log("req.url: ", req.url);
     res.writeHead(200, { "Content-Type": "application/json" });
     res.end(
       JSON.stringify({
@@ -35,28 +35,28 @@ const server = http.createServer((req, res) => {
       })
     );
   } else if (req.url === "/redirect") {
-    console.log("req.url: ", req.url);
+    // console.log("req.url: ", req.url);
     res.writeHead(302, { location: "/redirected" });
     res.end();
   } else if (req.url === "/redirected") {
     res.writeHead(200, { "Content-Type": "application/json" });
     res.end(JSON.stringify({ message: "You have been redirected!" }));
   } else if (req.url === "/cache") {
-    console.log("req.url: ", req.url);
+    // console.log("req.url: ", req.url);
     res.writeHead(200, {
       "Content-Type": "application/json",
       "Cache-Control": "no-store",
     });
     res.end(JSON.stringify({ message: "This resource was cached." }));
   } else if (req.url === "/cookie") {
-    console.log("req.url: ", req.url);
+    // console.log("req.url: ", req.url);
     res.writeHead(200, {
       "Content-Type": "application/json",
       "Set-Cookie": "hello=world",
     });
     res.end(JSON.stringify({ message: "cookies...yummm" }));
   } else if (req.url === "other") {
-    console.log("req.url: ", req.url);
+    // console.log("req.url: ", req.url);
     res.writeHead(404, { "Content-Type": "text/html" });
     res.end("404 - page not found");
   } else {
@@ -66,5 +66,5 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}/public/`);
+  console.log(`Server running at http://localhost:${port}/`);
 });

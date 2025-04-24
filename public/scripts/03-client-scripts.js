@@ -1,27 +1,23 @@
 export const callApi = async (link) => {
   try {
-    const res = await fetch(`http://localhost:5000/${link}`, {
+    const res = await fetch(`http://localhost:5001/${link}`, {
       method: "GET",
       credentials: "include",
-    })
-      .then((res) => res.text())
-      .then((data) => (document.getElementById("output").innerHTML = data))
-      .catch((error) => console.error("Error fetching data: ", error));
-
-    // if (!res.ok) {
-    //   throw new Error(`HTTP error! status: ${res.status}`);
-    // }
-
-    // const data = await res.text();
-    // document.getElementById("output").innerHTML = data;
+    });
+    const data = await res.text();
+    console.log(data);
+    document.getElementById("express-output").innerHTML = data;
   } catch (error) {
-    console.error("Error fetching data:", error);
-    document.getElementById("output").innerHTML = `Error: ${error.message}`;
+    console.error("Error fetching data: ", error);
+    document.getElementById(
+      "express-output"
+    ).innerHTML = `Error: ${error.message}`;
   }
 };
 
-document.querySelectorAll(".node-routing-nav-link").forEach((el) => {
+document.querySelectorAll(".express-routing-nav-link").forEach((el) => {
   el.addEventListener("click", () => {
+    console.log("clicked");
     const route = el.getAttribute("data-route");
     callApi(route);
   });

@@ -9,6 +9,10 @@
     "coins": "nodemon hw2/01-coins.js",
     "node": "nodemon hw2/02-node-routing.js",
     "express": "nodemon hw2/03-express-routing.js",
-    "submit": "nodemon public/inclass-node-routes.js"
+    "submit": "nodemon public/inclass-node-routes.js",
+    "start": "concurrently \"nodemon hw2/02-node-routing.js\" \"nodemon hw2/03-express-routing.js\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
   }
 }

@@ -8,11 +8,12 @@ export const callApi = async (link) => {
     const text = await res.text();
 
     const data = JSON.parse(text);
+    console.log(data);
 
-    document.getElementById("output").textContent = data.message;
+    document.getElementById("node-output").textContent = data.message;
   } catch (error) {
     console.error("Error fetching data: ", error);
-    document.getElementById("output").textContent = error;
+    document.getElementById("node-output").textContent = error;
   }
 };
 
