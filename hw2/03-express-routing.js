@@ -98,5 +98,5 @@ app.get("/other", (req, res) => {
 // Add your code here
 
 app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+  console.log(`Server running at http://localhost:${port}/`);
 });
