@@ -1,10 +1,19 @@
 export const callApi = async (link) => {
-  const res = await fetch(`http://localhost:5000/${link}`, {
-    method: "GET",
-    credentials: "include",
-  });
-  const data = await res.json();
-  document.getElementById("output").textContent = JSON.stringify(data.message);
+  try {
+    const res = await fetch(`http://localhost:5000/${link}`, {
+      method: "GET",
+      credentials: "include",
+    });
+
+    const text = await res.text();
+
+    const data = JSON.parse(text);
+
+    document.getElementById("output").textContent = data.message;
+  } catch (error) {
+    console.error("Error fetching data: ", error);
+    document.getElementById("output").textContent = error;
+  }
 };
 
 document.querySelectorAll(".node-routing-nav-link").forEach((el) => {

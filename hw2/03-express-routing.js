@@ -11,6 +11,7 @@ const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const app = express();
+
 const port = process.env.PORT || 5000;
 
 const routes = [
@@ -22,7 +23,9 @@ const routes = [
   "other",
 ];
 
-const allowed = ["http://localhost:5000", "http://127.0.0.1:5000"];
+const allowed = ["http://localhost:5500", "http://127.0.0.1:5500"];
+
+app.use(cookieParser());
 
 app.use(
   cors({
@@ -36,29 +39,6 @@ app.use(
     credentials: true,
   })
 );
-
-// app.use(
-//   cors({
-//     origin: (origin, callback) => {
-//       if (
-//         origin === "http://localhost:5500" ||
-//         origin === "http://127.0.0.1:5500" ||
-//         !origin
-//       ) {
-//         callback(null, true);
-//       } else {
-//         callback(new Error("Not Allowed by CORS"));
-//       }
-//     },
-//     credentials: true,
-//   })
-// );
-// cors({
-//   origin: "http://localhost:5500",
-//   credentials: true,
-// })
-
-app.use(cookieParser());
 
 app.get("/", (req, res) => {
   res.status(200);
@@ -92,21 +72,27 @@ app.get("/cache", (req, res) => {
 });
 
 app.get("/cookie", (req, res) => {
-  res
-    .cookie("hello", "world", {
-      maxAge: 86400 * 1000,
-      httpOnly: true,
-      sameSite: "none",
-      secure: true,
-    })
-    .redirect("/get-cookie");
+  res.cookie("hello", "world", {
+    maxAge: 86400 * 1000,
+    httpOnly: true,
+    sameSite: "none",
+    secure: true,
+  });
+
+  res.redirect("/get-cookie");
 });
 
 app.get("/get-cookie", (req, res) => {
-  const cookie = req.cookies.hello;
-  req
+  res
     .set({ "Content-Type": "text/html" })
-    .send(`Cookie has been retrieved ${cookie}`);
+    .send(`Cookies: ${JSON.stringify(req.cookies)}`);
+});
+
+app.get("/other", (req, res) => {
+  res
+    .status(404)
+    .set({ "Content-Type": "text/html" })
+    .send("404 - Page Not Found");
 });
 
 // Add your code here

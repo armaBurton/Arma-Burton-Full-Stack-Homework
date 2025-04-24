@@ -1,6 +1,6 @@
 export const callApi = async (link) => {
   try {
-    const res = await fetch(`http://localhost:5500/${link}`, {
+    const res = await fetch(`http://localhost:5000/${link}`, {
       method: "GET",
       credentials: "include",
     })
