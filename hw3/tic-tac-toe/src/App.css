@@ -1,0 +1,56 @@
+:root {
+  --navy: hsl(248, 51%, 15%);
+  --violet: hsl(266, 45%, 29%);
+  --orange: hsl(26, 95%, 45%);
+  --yellow: hsl(53, 100%, 72%);
+  --mauve: hsl(352, 48%, 41%);
+}
+
+body {
+  /* background: #ff8d33; */
+  background: linear-gradient(132deg, var(--orange) 0%, var(--yellow) 100%);
+  /* background: linear-gradient(132deg, var(--orange) 0%, var(--yellow) 100%); */
+  width: 100%;
+  height: 100vh;
+  background-attachment: fixed;
+  background-size: cover;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  font-family: "Barriecito";
+  font-size: 3em;
+}
+
+.square {
+  width: 100px;
+  height: 100px;
+  background-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+  font-size: 3em;
+  font-weight: 900;
+}
+
+.square:hover {
+  background-color: var(--navy);
+  color: var(--orange);
+}
+
+.square:active {
+  background-color: var(--violet);
+  color: var(--yellow);
+}
+
+.game-container {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  flex-direction: column;
+}
+
+.status {
+  font-size: 1.5em;
+}
